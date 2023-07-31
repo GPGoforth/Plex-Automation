@@ -1,0 +1,220 @@
+version: '3.9'
+
+services:
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - $APPDATA/portainer-data:/data
+    ports:
+      - "9000:9000"
+
+  plex: # Media Server
+    container_name: plex
+    image: cr.hotio.dev/hotio/plex
+    restart: unless-stopped
+    logging:
+      driver: json-file
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+      - UMASK=002
+      - DEBUG=no
+      - PLEX_CLAIM=$PLEX_CLAIM
+      - PLEX_PASS=$PLEX_PASS
+      - ADVERTISE_IP=$PLEX_ADVERTISE_IP
+    volumes:
+      - $APPDATA/plex:/config:rw
+      - $PLEXMEDIA:/media:rw
+      - /tmp:/transcode:rw
+    devices:
+      - /dev/dri:/dev/dri #required for Synology users
+    privileged: true # libusb_init failed
+    network_mode: host
+
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $APPDATA/radarr:/config
+      - $DOWNDIR:/downloads
+    ports:
+      - "7878:7878"
+    restart: unless-stopped
+    networks:
+      - media-network
+
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $APPDATA/sonarr:/config
+      - $DOWNDIR:/downloads
+    ports:
+      - "8989:8989"
+    restart: unless-stopped
+    networks:
+      - media-network
+
+  lidarr:
+    image: linuxserver/lidarr
+    container_name: lidarr
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $APPDATA/lidarr:/config
+      - $DOWNDIR:/downloads
+    ports:
+      - "8686:8686"
+    restart: unless-stopped
+    networks:
+      - media-network
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $APPDATA/prowlarr:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+    networks:
+      - media-network
+
+  bazarr:
+    image: linuxserver/bazarr
+    container_name: bazarr
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $APPDATA/bazarr:/config
+      - $DOWNDIR:/downloads
+    ports:
+      - "6767:6767"
+    restart: unless-stopped
+    networks:
+      - media-network
+
+  nzbget: #usenet download agent
+    image: ghcr.io/linuxserver/nzbget
+    container_name: nzbget
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $APPDATA/nzbget:/config
+      - $DOWNDIR:/downloads
+    ports:
+      - 6789:6789
+    restart: unless-stopped
+    networks:
+      - media-network
+
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $APPDATA/jackett:/config
+    ports:
+      - "9117:9117"
+    restart: unless-stopped
+    networks:
+      - media-network
+
+  overseerr: #media requesting tool
+    image: sctx/overseerr:latest
+    container_name: overseerr
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $APPDATA/overseerr:/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+    networks:
+      - media-network
+
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - $APPDATA/heimdall:/config
+    ports:
+      - "80:80"
+      - "443:443"
+      # - "8083:80"
+    restart: unless-stopped
+    networks:
+      - media-network
+
+homarr:
+    image: ghcr.io/ajnart/homarr:latest
+    container_name: homarr
+    volumes:
+      - $APPDATA/homarr:/config
+      - $APPDATA/homarr/icons:/icons
+    ports:
+      - "7575:7575"
+    restart: unless-stopped
+    networks:
+      - media-network
+
+watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+    networks:
+      - media-network
+
+autoheal:
+    image: willfarrell/autoheal
+    container_name: autoheal
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+      - AUTOHEAL_INTERVAL=5
+      - AUTOHEAL_START_PERIOD=0
+      - CURL_TIMEOUT=30 
+    restart: unless-stopped
+    networks:
+      - media-network
+
+networks:
+  media-network:
