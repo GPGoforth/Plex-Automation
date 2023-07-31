@@ -20,7 +20,7 @@ ToC
     - [Lidarr](#lidarr)
     - [Bazarr](#bazarr)
     - [Overseerr](#overseerr)
-  - [Author notes](#author-notes)
+  - [Personal notes](#personal-notes)
   - [References](#references)
 
 There are a many options for creating a media server and automating it.<br>
