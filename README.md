@@ -4,7 +4,7 @@
 <!-- *Modified 2023-07-91* -->
 
 Prerequisites:
-This assumes you have a working installation of Docker and Docker-Compose.
+This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux.
 
 ToC
 - [Automated home media server](#automated-home-media-server)
