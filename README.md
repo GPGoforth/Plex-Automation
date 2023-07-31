@@ -653,6 +653,7 @@ I am wanting to add Plex Autoscan in the near future to have faster scanning of 
 
 - [ ] Plex Autoscan
 - [ ] Backups
+- [ ] Switch to SABnzb as NZBGet is no longer in development
 - [ ] Monitoring (Including notifications, such as low storage etc..)
 
 More services:
