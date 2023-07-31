@@ -12,7 +12,7 @@ ToC
   - [Configurations](#configurations)
     - [Plex](#plex)
     - [Heimdall](#heimdall)
-    - [NZBget](#nzbget)
+    - [NZBGet](#nzbget)
     - [Prowlarr](#prowlarr)
     - [Jacket](#jacket)
     - [Radarr](#radarr)
@@ -464,9 +464,12 @@ Optional service.
 
 - Last, you may want to change home page background from settings menu
 
-### NZBget
+### NZBGet
 
-Access the NZBget web interface at ``http://<your_host_ip>:6789`` to set up and configure your download client.
+Access the NZBGet web interface at ``http://<your_host_ip>:6789`` to set up and configure your download client.
+1. Instruction WIP
+Additional resources:
+[NZBGet (Official Site)](https://nzbget.net/)
 
 ### Prowlarr
 
