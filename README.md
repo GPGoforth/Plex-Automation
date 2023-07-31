@@ -3,6 +3,8 @@
 <!-- *Created 2023-07-31* Date started to develop and implement-->
 <!-- *Modified 2023-07-91* -->
 
+Prerequisites:
+This assumes you have a working installation of Docker and Docker-Compose.
 
 ToC
 - [Automated home media server](#automated-home-media-server)
