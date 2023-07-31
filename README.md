@@ -21,7 +21,7 @@ ToC
     - [Bazarr](#bazarr)
     - [Overseerr](#overseerr)
   - [Author notes](#author-notes)
-  - [Refrances](#refrances)
+  - [References](#references)
 
 There are a many options for creating a media server and automating it.<br>
 I have been a Plex user for years and have a lifetime Plex Pass, so that was going to be my personal choice, but this could easlily be modified for Emby, JellyFin or any other one out thaere.<br>
@@ -668,7 +668,7 @@ Maybe in the future:
 - [ ] Mylar
 - [ ] Whisparr, Really?
 
-## Refrances
+## Reference
 
 - [https://github.com/jertel/vuegraf](https://github.com/atanasyanew/media-server)
 - [Your automated Media Server - a docker guide](https://academy.pointtosource.com/containers/all-in-one-media-server-docker/)
