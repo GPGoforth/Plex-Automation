@@ -645,6 +645,7 @@ Access the Overseerr web interface by navigating to the URL ``http://<your-serve
    
 Additional resources:
 - [Overseerr - Documentation](https://docs.overseerr.dev/)
+
 ## Personal notes
 
 Things I am looking to add..
@@ -668,8 +669,8 @@ Maybe in the future:
 - [ ] Mylar
 - [ ] Whisparr, Really?
 
-## Reference
+## References
 
-- [https://github.com/jertel/vuegraf](https://github.com/atanasyanew/media-server)
+- [media-server](https://github.com/atanasyanew/media-server)
 - [Your automated Media Server - a docker guide](https://academy.pointtosource.com/containers/all-in-one-media-server-docker/)
 - [Servarr Wiki](https://wiki.servarr.com/)
