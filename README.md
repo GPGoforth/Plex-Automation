@@ -12,7 +12,7 @@ ToC
   - [Configurations](#configurations)
     - [Plex](#plex)
     - [Heimdall](#heimdall)
-    - [qBittorrent](#qbittorrent)
+    - [NZBget](#nzbget)
     - [Prowlarr](#prowlarr)
     - [Jacket](#jacket)
     - [Radarr](#radarr)
