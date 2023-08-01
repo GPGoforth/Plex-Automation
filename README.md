@@ -12,7 +12,7 @@ ToC
   - [Configurations](#configurations)
     - [Plex](#plex)
     - [Heimdall](#heimdall)
-    - [NZBGet](#nzbget)
+    - [SABnzbd](#sabnzbd)
     - [Prowlarr](#prowlarr)
     - [Jacket](#jacket)
     - [Radarr](#radarr)
@@ -34,7 +34,7 @@ Bazarr will take care of downloading subtitles. I have also added Watchtower to 
 <br>
 
 Plex is a great choice for a media server and has many additional features that can enhance your media streaming experience.
-In combination with other services such as [Radarr](https://radarr.video/), [Sonarr](https://sonarr.tv/), [Lidarr](https://lidarr.audio/), [NZBGet](https://nzbget-ng.github.io/), [jackett](https://github.com/Jackett/Jackett) and [Overseerr](https://overseerr.dev/) it makes user experience in whole new level.
+In combination with other services such as [Radarr](https://radarr.video/), [Sonarr](https://sonarr.tv/), [Lidarr](https://lidarr.audio/), [SABnzbd](https://sabnzbd.org/), [jackett](https://github.com/Jackett/Jackett) and [Overseerr](https://overseerr.dev/) it makes user experience in whole new level.
 
 Here's a brief explanation of each services and the and the relationships between:
 
@@ -72,11 +72,11 @@ Here's a brief explanation of each services and the and the relationships betwee
   - It allows you to use many more indexers that are not directly compatible with apps like Radarr.<br>
 
   Please keep in mind that the use of private trackers is at your own risk, and it's against the terms of service of many of these sites, also it's illegal in some countries, you should check your country laws and regulations before using them.
-- **NZBGet**<br> 
+- **SABnzbd**<br> 
   Usenet Download client.
   - Automates the process of downloading files from the internet.
   - It allows you to download movies from the indexers using Usenet Server.
-  - It's integrated with Radarr, Sonarr etc.., which will tell NZBGet to download the files that those services found.
+  - It's integrated with Radarr, Sonarr etc.., which will tell SABnzbd to download the files that those services found.
 - **Overseerr**<br> 
   Content request application.
   - Overseerr is a web-based interface that allows users to request new movies, TV shows, and music to be added to the library.
@@ -141,17 +141,18 @@ The main motivation behind my compose file is to have a centralized place to man
 ``.env``
 ```yaml
 #General
-PUID=#### #change this to your user's UID
-PGID=#### #change this to your user's GID
-TZ="America/New_York" #change this to your timezone
-DOWNDIR=/change/me/downloads #change to where your download will be
-APPDATA=/change/me/appdata #this is a common folder where I put all my individual containers configs
+PUID=1001 #change this to your user's UID
+PGID=1001 #change this to your user's GID
+TZ="America/New_York" #change to your timezone
+DOWNDIR=/opt/appdata/common/downloads #change to your path this is where downloaded files are put for processing
+INCDOWNDIR=/opt/appdata/common/downloads #change to your path this is where incomplete download files are located
+APPDATA=/opt/appdata  #change to your path this is where app configs reside
 
 #Plex
 PLEX_PASS=true #change to false if you do not have plex pass
-PLEX_CLAIM=xxxxxxxxxx #enter plex claim token here from https://plex.tv/clain
-PLEXMEDIA=/change/me/libraries #change to where your Plex libraies are located
-PLEX_ADVERTISE_IP=http://xxx.xxx.xxx.xxx:32400 #change to include your actual Plex servers IP address
+PLEX_CLAIM=claim-xxxxx  #enter plex claim token here
+PLEXMEDIA=/media/plex #change to your Plex Library path
+PLEX_ADVERTISE_IP=http://192.168.86.6:32400 #change to include your actual IP
 ```
 
 ``docker-compose.yml``
@@ -276,18 +277,34 @@ services:
     networks:
       - media-network
 
-  nzbget: #usenet download agent
-    image: ghcr.io/linuxserver/nzbget
-    container_name: nzbget
+  #nzbget: #usenet download agent NO LONGER BEING DEVELOPED replaced with SABnzbd
+  #  image: ghcr.io/linuxserver/nzbget
+  #  container_name: nzbget
+  #  environment:
+  #    - PUID=$PUID
+  #    - PGID=$PGID
+  #    - TZ=$TZ
+  #  volumes:
+  #    - $APPDATA/nzbget:/config
+  #    - $DOWNDIR:/downloads
+  #  ports:
+  #    - 6789:6789
+  #  restart: unless-stopped
+  #  networks:
+  #    - media-network
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
     environment:
       - PUID=$PUID
       - PGID=$PGID
       - TZ=$TZ
     volumes:
-      - $APPDATA/nzbget:/config
+      - $APPDATA/sabnzb:/config
       - $DOWNDIR:/downloads
+      - $INCDOWNDIR:/incomplete-downloads
     ports:
-      - 6789:6789
+      - "8080:8080"
     restart: unless-stopped
     networks:
       - media-network
@@ -451,7 +468,7 @@ Optional service.
   | Title | URL |
   |:------|:----|
   | Plex        | ``http://<your_host_ip>:32400/web`` |
-  | NZBget      | ``http://<your_host_ip>:6789`` |
+  | SABnzbd     | ``http://<your_host_ip>:8080`` |
   | Radarr      | ``http://<your_host_ip>:7878`` |
   | Sonarr      | ``http://<your_host_ip>:8989`` |
   | Lidarr      | ``http://<your_host_ip>:8686`` |
@@ -464,12 +481,12 @@ Optional service.
 
 - Last, you may want to change home page background from settings menu
 
-### NZBGet
+### SABNzbd
 
-Access the NZBGet web interface at ``http://<your_host_ip>:6789`` to set up and configure your download client.
+Access the SABnzbd web interface at ``http://<your_host_ip>:8080`` to set up and configure your download client.
 1. Instruction WIP
 Additional resources:
-[NZBGet (Official Site)](https://nzbget.net/)
+[SABnzbd (Official Site)](https://sabnzbd.org/)
 
 ### Prowlarr
 
@@ -654,7 +671,7 @@ I am wanting to add Plex Autoscan in the near future to have faster scanning of 
 
 - [ ] Plex Autoscan
 - [ ] Backups
-- [ ] Switch to SABnzb as NZBGet is no longer in development
+- [X] Switch to SABnzb as NZBGet is no longer in development
 - [ ] Monitoring (Including notifications, such as low storage etc..)
 
 More services:
