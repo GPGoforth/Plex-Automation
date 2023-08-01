@@ -682,6 +682,7 @@ More services:
 - [ ] Readarr
 
 Maybe in the future:
+- [ ] Implement Ansible to fully deploy entire stack on a new server
 - [ ] LazyLibrarian 
 - [ ] Mylar
 - [ ] Whisparr, Really?
