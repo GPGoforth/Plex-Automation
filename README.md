@@ -325,7 +325,7 @@ services:
       - media-network
 
   overseerr: #media requesting tool
-    image: sctx/overseerr:latest
+    image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
     environment:
       - PUID=$PUID
