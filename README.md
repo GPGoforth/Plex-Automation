@@ -468,15 +468,16 @@ Optional service.
   | Title | URL |
   |:------|:----|
   | Plex        | ``http://<your_host_ip>:32400/web`` |
-  | SABnzbd     | ``http://<your_host_ip>:8080`` |
-  | Radarr      | ``http://<your_host_ip>:7878`` |
-  | Sonarr      | ``http://<your_host_ip>:8989`` |
-  | Lidarr      | ``http://<your_host_ip>:8686`` |
-  | Prowlarr    | ``http://<your_host_ip>:9696`` |
-  | Jackett     | ``http://<your_host_ip>:9117`` |
-  | Bazarr      | ``http://<your_host_ip>:6767`` |
-  | Overseerr   | ``http://<your_host_ip>:5055`` |
-  | Heimdall    | ``http://<your_host_ip>``      |
+  | SABnzbd     | ``http://<your_host_ip>:8080``      |
+  | Radarr      | ``http://<your_host_ip>:7878``      |
+  | Sonarr      | ``http://<your_host_ip>:8989``      |
+  | Lidarr      | ``http://<your_host_ip>:8686``      |
+  | Prowlarr    | ``http://<your_host_ip>:9696``      |
+  | Portainer   | ``http://<your_host_ip>:9000``      |
+  | Jackett     | ``http://<your_host_ip>:9117``      |
+  | Bazarr      | ``http://<your_host_ip>:6767``      |
+  | Overseerr   | ``http://<your_host_ip>:5055``      |
+  | Heimdall    | ``http://<your_host_ip>``           |
   | Homarr      | ``http://<your_host_ip>:7575``      |
 
 - Last, you may want to change home page background from settings menu
