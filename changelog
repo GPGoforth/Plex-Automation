@@ -1,0 +1,7 @@
+August 1, 2023
+- removed references to NZBGet in documentation as it is in no longer in development
+- added SABnzbd to documentation to replace NZBGet
+- commented out MZBGet in docker-compose.yml
+- addeded depeployment configuration for SABnzdb in docker-compose.yml
+- updated .env file to add additional variable for SABnzdb incomplete-downloads
+- updaed comments in .env file for better documentation of each entry
