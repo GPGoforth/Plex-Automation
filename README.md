@@ -1,7 +1,7 @@
 # Plex-Automation
 
-<!-- *Created 2023-07-31* Date started to develop and implement-->
-<!-- *Modified 2023-07-91* -->
+<!-- *Created 2023-07-31* Date Started to documentation and testing implementation-->
+<!-- *Modified 2023-08-01* -->
 
 Prerequisites:
 This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux.
