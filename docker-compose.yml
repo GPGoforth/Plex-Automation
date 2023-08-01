@@ -198,7 +198,7 @@ services:
     networks:
       - media-network
 
-homarr:
+  homarr:
     image: ghcr.io/ajnart/homarr:latest
     container_name: homarr
     volumes:
@@ -210,7 +210,7 @@ homarr:
     networks:
       - media-network
 
-watchtower:
+  watchtower:
     image: containrrr/watchtower
     container_name: watchtower
     volumes:
@@ -219,7 +219,7 @@ watchtower:
     networks:
       - media-network
 
-autoheal:
+  autoheal:
     image: willfarrell/autoheal
     container_name: autoheal
     volumes:
