@@ -280,13 +280,6 @@ Additional resources:
 - [Prowlarr is the Jackett alternative you need (unraid-guides.com)](https://unraid-guides.com/2022/04/29/prowlarr-is-the-jackett-alternative-you-need/)
 - [Connect Prowlarr to Radarr (quickbox.io)](https://quickbox.io/knowledge-base/v2/applications/prowlarr/connect-prowlarr-to-radarr/)
 
-### Jacket
-
-Optional, you may use Prowlarr instead.
-- Access the Jackett Web UI by navigating to ``http://<your_host_ip>:9117`` in your browser.
-- In the Jackett Web UI, click on the "Add indexer" button on the top right corner of the page.
-- You will find a list of available indexers, you can add or configure indexers as you wish.
-
 ### Radarr
 
 Access the Radarr Web UI by navigating to ``http://<your_host_ip>:7878`` in your browser.<br>
