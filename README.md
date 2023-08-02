@@ -14,7 +14,6 @@ Table of Contents
     - [Heimdall](#heimdall)
     - [SABnzbd](#sabnzbd)
     - [Prowlarr](#prowlarr)
-    - [Jacket](#jacket)
     - [Radarr](#radarr)
     - [Sonarr](#sonarr)
     - [Lidarr](#lidarr)
@@ -27,14 +26,14 @@ There are a many options for creating a media server and automating it.<br>
 I have been a Plex user for years and have a lifetime Plex Pass, so that was going to be my personal choice, but this could easlily be modified for Emby, JellyFin or any other one out thaere.<br>
 
 Overseerr service acts as the main interface for users to request new media to be added to the library.<br>
-Radarr, Sonarr, and Lidarr with the help of Jackett/Prowlarr work together to automate the process of finding and downloading new media files, and NZBGet handles the actual downloading of the files.
+Radarr, Sonarr, and Lidarr with the help of Prowlarr work together to automate the process of finding and downloading new media files, and NZBGet handles the actual downloading of the files.
 Bazarr will take care of downloading subtitles. I have also added Watchtower to keep my containers updated and autoheal to make sure everything stays running. Lastly I have added Homarr and Heimdall as a dashbord/frontend for accessing everything. Last but not leat I added Portainer for visibility in everything running in Docker
 
 
 <br>
 
 Plex is a great choice for a media server and has many additional features that can enhance your media streaming experience.
-In combination with other services such as [Radarr](https://radarr.video/), [Sonarr](https://sonarr.tv/), [Lidarr](https://lidarr.audio/), [SABnzbd](https://sabnzbd.org/), [jackett](https://github.com/Jackett/Jackett) and [Overseerr](https://overseerr.dev/) it makes user experience in whole new level.
+In combination with other services such as [Radarr](https://radarr.video/), [Sonarr](https://sonarr.tv/), [Lidarr](https://lidarr.audio/), [SABnzbd](https://sabnzbd.org/), [Prowlarr](https://prowlarr.com/) and [Overseerr](https://overseerr.dev/) it makes user experience in whole new level.
 
 Here's a brief explanation of each services and the and the relationships between:
 
@@ -44,12 +43,12 @@ Here's a brief explanation of each services and the and the relationships betwee
   - It is the main service that you will use to view your media files.
 - **Sonarr**<br>
   Which is a TV show manager. 
-  - Sonarr is a TV show management service that can automatically download new TV shows and manage your TV show library. It can be integrated with jackett, to allow you to use many torrent trackers that are not available in the default installation and it can be integrated with Filebot to download subtitles for your media files.
+  - Sonarr is a TV show management service that can automatically download new TV shows and manage your TV show library. It can be integrated with prowlarr, to allow you to use many torrent trackers that are not available in the default installation and it can be integrated with Filebot to download subtitles for your media files.
   - It allows you to search, download, and organize your TV shows
   - Automates the process of downloading new TV shows and managing your TV show library.
 - **Radarr**<br>
   A movie manager. 
-  - Radarr is a movie management service that is similar to Sonarr, but for movies. It can automatically download new movies and manage your movie library. It's integrated with jackett, to allow you to use many torrent trackers that are not available in the default installation, and it can be integrated with Filebot to download subtitles for your media files.
+  - Radarr is a movie management service that is similar to Sonarr, but for movies. It can automatically download new movies and manage your movie library. It's integrated with prowlarr, to allow you to use many torrent trackers that are not available in the default installation, and it can be integrated with Filebot to download subtitles for your media files.
   - It allows you to search, download, and organize your movies.
   - Automates the process of downloading new movies and managing your movie library.
   
@@ -64,11 +63,11 @@ Here's a brief explanation of each services and the and the relationships betwee
   They can also set up different priorities for the indexers, so Radarr will try to download the movie from the highest priority indexer first and then move on to the next one if it doesn't find the movie.
 - **Lidarr**<br>
   Music collection manager.
-  - Lidarr is a music management service that is similar to Sonarr, but for music. It can automatically download new music releases and manage your music library. It's integrated with jackett and qbittorrent, to allow you to use many torrent trackers and download client that are not available in the default installation.
+  - Lidarr is a music management service that is similar to Sonarr, but for music. It can automatically download new music releases and manage your music library. It's integrated with prowlarr and qbittorrent, to allow you to use many torrent trackers and download client that are not available in the default installation.
   - Automates the process of downloading new music and managing your music library.
-- **Jackett/Prowlarr**<br>
+- **Prowlarr**<br>
   Which is a proxy server for indexers.
-  - Jackett is an essential tool that allows you to use many torrent trackers with Sonarr, Radarr and Lidarr that are not available in the default installation.
+  - Prowlarr is an essential tool that allows you to use many torrent trackers with Sonarr, Radarr and Lidarr that are not available in the default installation.
   - It allows you to use many more indexers that are not directly compatible with apps like Radarr.<br>
 
   Please keep in mind that the use of private trackers is at your own risk, and it's against the terms of service of many of these sites, also it's illegal in some countries, you should check your country laws and regulations before using them.
