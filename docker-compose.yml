@@ -138,21 +138,6 @@ services:
     networks:
       - media-network
 
-  jackett:
-    image: linuxserver/jackett
-    container_name: jackett
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/jackett:/config
-    ports:
-      - "9117:9117"
-    restart: unless-stopped
-    networks:
-      - media-network
-
   overseerr: #media requesting tool
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
