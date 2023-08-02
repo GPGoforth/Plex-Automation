@@ -6,7 +6,7 @@
 Prerequisites:
 This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux. I am personally running this on Debian 12.1 and connecting to my NAS using CIFS.
 
-ToC
+Table of Contents
 - [Fully Automated Plex Media Server](#automated-home-media-server)
   - [Deployment](#deployment)
   - [Configurations](#configurations)
