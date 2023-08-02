@@ -121,21 +121,6 @@ services:
     networks:
       - media-network
 
-  #nzbget: #usenet download agent No longer in development and switiching to SABnzbd
-  #  image: ghcr.io/linuxserver/nzbget
-  #  container_name: nzbget
-  #  environment:
-  #    - PUID=$PUID
-  #    - PGID=$PGID
-  #    - TZ=$TZ
-  #  volumes:
-  #    - $APPDATA/nzbget:/config
-  #    - $DOWNDIR:/downloads
-  #  ports:
-  #    - 6789:6789
-  #  restart: unless-stopped
-  #  networks:
-  #    - media-network
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
     container_name: sabnzbd
