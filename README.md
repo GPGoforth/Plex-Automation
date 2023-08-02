@@ -138,262 +138,28 @@ Setting up a media server can be a bit complex and time consuming, also a lot of
 Using Docker Compose to set everything up is a great way to automate and simplify the process. It also makes it so you can take your setup and run it anywhere and on multiple operating systems. Docker Compose is a tool that allows you to define and run multiple containers as a single service. It makes it easy to spin everything up with a single command and tear it all down in a short amount of time.<br>
 The main motivation behind my compose file is to have a centralized place to manage all the services for my setup and to allow me to make changes to them easily. There are two files involved the .env file where I setup variables that are plugged into the docker-compose.yml file, so changes and customizations can be made fairly easy in the .env file and leaving the larger docker-compose.yml alone.
 
-``.env``
-```yaml
-#General
-PUID=1001 #change this to your user's UID
-PGID=1001 #change this to your user's GID
-TZ="America/New_York" #change to your timezone
-DOWNDIR=/opt/appdata/common/downloads #change to your path this is where downloaded files are put for processing
-INCDOWNDIR=/opt/appdata/common/downloads #change to your path this is where incomplete download files are located
-APPDATA=/opt/appdata  #change to your path this is where app configs reside
+Docker=Compose and .env files brief walk through
 
-#Plex
-PLEX_PASS=true #change to false if you do not have plex pass
-PLEX_CLAIM=claim-xxxxx  #enter plex claim token here
-PLEXMEDIA=/media/plex #change to your Plex Library path
-PLEX_ADVERTISE_IP=http://192.168.86.6:32400 #change to include your actual IP
-```
-
-``docker-compose.yml``
-```yaml
-version: '3.9'
-
-services:
-
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - $APPDATA/portainer-data:/data
-    ports:
-      - "9000:9000"
-
-  plex: # Media Server
-    container_name: plex
-    image: cr.hotio.dev/hotio/plex
-    restart: unless-stopped
-    logging:
-      driver: json-file
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-      - UMASK=002
-      - DEBUG=no
-      - PLEX_CLAIM=$PLEX_CLAIM
-      - PLEX_PASS=$PLEX_PASS
-      - ADVERTISE_IP=$PLEX_ADVERTISE_IP
-    volumes:
-      - $APPDATA/plex:/config:rw
-      - $PLEXMEDIA:/media:rw
-      - /tmp:/transcode:rw
-    devices:
-      - /dev/dri:/dev/dri #required for Synology users
-    privileged: true # libusb_init failed
-    network_mode: host
-
-  radarr:
-    image: linuxserver/radarr
-    container_name: radarr
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/radarr:/config
-      - $DOWNDIR:/downloads
-    ports:
-      - "7878:7878"
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  sonarr:
-    image: linuxserver/sonarr
-    container_name: sonarr
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/sonarr:/config
-      - $DOWNDIR:/downloads
-    ports:
-      - "8989:8989"
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  lidarr:
-    image: linuxserver/lidarr
-    container_name: lidarr
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/lidarr:/config
-      - $DOWNDIR:/downloads
-    ports:
-      - "8686:8686"
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest
-    container_name: prowlarr
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/prowlarr:/config
-    ports:
-      - 9696:9696
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  bazarr:
-    image: linuxserver/bazarr
-    container_name: bazarr
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/bazarr:/config
-      - $DOWNDIR:/downloads
-    ports:
-      - "6767:6767"
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  sabnzbd:
-    image: lscr.io/linuxserver/sabnzbd:latest
-    container_name: sabnzbd
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/sabnzb:/config
-      - $DOWNDIR:/downloads
-      - $INCDOWNDIR:/incomplete-downloads
-    ports:
-      - "8080:8080"
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  jackett:
-    image: linuxserver/jackett
-    container_name: jackett
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/jackett:/config
-    ports:
-      - "9117:9117"
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  overseerr: #media requesting tool
-    image: lscr.io/linuxserver/overseerr:latest
-    container_name: overseerr
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/overseerr:/config
-    ports:
-      - 5055:5055
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  heimdall:
-    image: linuxserver/heimdall
-    container_name: heimdall
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-    volumes:
-      - $APPDATA/heimdall:/config
-    ports:
-      - "80:80"
-      - "443:443"
-      # - "8083:80"
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  homarr:
-    image: ghcr.io/ajnart/homarr:latest
-    container_name: homarr
-    volumes:
-      - $APPDATA/homarr:/config
-      - $APPDATA/homarr/icons:/icons
-    ports:
-      - "7575:7575"
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  watchtower:
-    image: containrrr/watchtower
-    container_name: watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: unless-stopped
-    networks:
-      - media-network
-
-  autoheal:
-    image: willfarrell/autoheal
-    container_name: autoheal
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - AUTOHEAL_CONTAINER_LABEL=all
-      - AUTOHEAL_INTERVAL=5
-      - AUTOHEAL_START_PERIOD=0
-      - CURL_TIMEOUT=30 
-    restart: unless-stopped
-    networks:
-      - media-network
-
-networks:
-  media-network:
-```
-
-Docker compose file brief walk through
-
-- **Volumes** As you may notice, all the services have a folder named ``$APPDATA`` that referes to a path defined in the .env file.
-  Using a separate folder for storing the configuration files of your services can be a good idea. This will allow you to easily make changes to the configuration files and also helps you to keep your configs safe.
+- **Volumes** There are three volumes defined in my .env file that are used for the various apps. 
+  1. DOWNDIR - this defines the folder on the file system that is used to store completed downloads from SABnzbd and is where Sonarr, Radarr, Lidarr, etc... pick up the files rename them and copy them over to the Plex libraries. I have mine located in /mnt/common/downloads which is a seperate drive that is just used for this purpose.
+  2.INCDOWNDIR - this defines the folder on the file system where SABnzbd will store the files it is in the prcoess of downloading and not ready for processing. Once the download completes SABnzbd will move them to the download folder for processing by the other apps. I have mine located in /mnt/common/incomplete-downloads which is a seperate drive that is just used for this purpose.
+  3. APPDATA - this is where each app stores its configuration files. Using a separate folder for storing the configuration files. If you need to backup any app these are the files you would want to copy. I have mine located at /opt/appdata as this seems to be a good common area for them.
+  4. PLEXMEDIA - This is where the Plex libraries are located. /mnt/plex1 this is a mount I have for my NAS where my libraries are stored. I added the one, just incase I decide in the future to add more volumes for my libraries.
 
 - **Networking** ``media-network``
   This is the network that the services are connected to, it allows the services to communicate with each other.
 
 Here is a summary of the steps went through to create the media server:
 
-1. Create a Docker Compose file: Create a new file called ``docker-compose.yml`` (I create a folder on my shared storage to store it) and copy the example compose file I provided you with into it.
-2. Create a .env file: Create a new file called ".env" and copy the example I provided and change the variables to fit your setup.
+1. Copy the [docker-compose.yml](https://github.com/GPGoforth/Plex-Automation/blob/main//docker-compose.yml) and the [.env](https://github.com/GPGoforth/Plex-Automation/blob/main/.env) file to a location on your server.
+2. Edit the .env file to your server setup
+3. If there are any services you do not want to install, simply edit the docker-compose.yml file and delete those sections or comment them out.
+4. Start the services: Run the command ``docker-compose up -d`` or ``docker compose up -d`` (depending on your installation) in the same directory as the compose file and the .env file to start the services defined in the compose file.
+5. You should everything download and then deploy.
+6. Once everything is up the first service I would at lest log into is Plex and Portainer. The Plex claim # you got is only valid for 4 minutes and after about the same time Portainer will not let you create the initial admin user. If Portainer is already saying it is locked and needs to be resarted, simply run `docker ps` and verify the name of the Portainer container is portainer-ce and then run `docker restart portainer-ce`. Once that completes refresh the Portainer page and it should let you setup your admin user.
 
-3. Folder structure: Create a folder called for the ``Libraries`` (mine is /media/plex) and one for ``AppData`` (mine is /opt/appdata), and finally one for downloads (mine is /mnt/downloads) these folders will be used to store your media files, persist service configurations, and hold files while they are being downloaded.
+Overall, the compose file creates a powerful and versatile media server that can automate the process of downloading and managing your media files, while also providing a variety of features and tools to enhance the overall functionality and security of the server.
+
   An example of media folders structure (in terms of the compose above), note that you will need to create the folders on the filesystem:
     ```bash
     .
@@ -413,11 +179,13 @@ Here is a summary of the steps went through to create the media server:
     │       └───tv
     │
     └───AppData
+    │       ├───sonarr
+    │       ├───radarr
+    │       └───plex
+    │       └───etc...
     ```
 
-1. Start the services: Run the command ``docker-compose up -d`` or ``docker compose up -d`` (depending on your installation) in the same directory as the compose file and the .env file to start the services defined in the compose file.
 
-Overall, the compose file creates a powerful and versatile media server that can automate the process of downloading and managing your media files, while also providing a variety of features and tools to enhance the overall functionality and security of the server.
 
 ## Configurations
 
@@ -427,8 +195,8 @@ Please keep in mind that setting up a media server can be a complex task, especi
 
 It is also important to keep in mind that downloading copyrighted content from torrents or usenet is illegal in most countries and could lead to legal action if caught.<br>
 
-Please keep in mind that your configuration may vary depending on how you want things setup and the specific needs of your server.<br>
-Remember that configuring a server can be a complex task and may require multiple iterations to get it working to your liking, so take your time to test that everything is meeting your expections.
+Remember that your configuration may vary depending on how you want things setup and the specific needs of your server.<br>
+Configuring a server can be a complex task and may require multiple iterations to get it working to your liking, so take your time to test that everything is meeting your expections.
 
 ### Plex
 
@@ -444,8 +212,6 @@ Additional resources:
 - [github.com/plexinc/pms-docker](https://github.com/plexinc/pms-docker)
 
 ### Heimdall
-
-Optional service.
 
 - Web UI available at ``http://<your_host_ip>:80``
 - Click on ``Add an application here`` and search for the application, for example ``Plex``
