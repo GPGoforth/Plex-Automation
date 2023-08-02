@@ -4,10 +4,10 @@
 <!-- *Modified 2023-08-01* -->
 
 Prerequisites:
-This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux.
+This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux. I am personally running this on Debian 12.1 and connecting to my NAS using CIFS.
 
 ToC
-- [Automated home media server](#automated-home-media-server)
+- [Fully Automated Plex Media Server](#automated-home-media-server)
   - [Deployment](#deployment)
   - [Configurations](#configurations)
     - [Plex](#plex)
@@ -134,9 +134,9 @@ Bazarr will automatically download subtitles for the movie, music, or series and
 
 ## Deployment
 
-Setting up a media server can be a bit complex and time consuming, also a lot of people run this on old hardware so making it as portable as possible is always something to look out for<br>
-Using Docker Compose to set everything up is a great way to automate and simplify the process. It also makes it so you can take your setup and run it anywhere and on multiple operating systems. Docker Compose is a tool that allows you to define and run multiple containers as a single service.<br>
-The main motivation behind my compose file is to have a centralized place to manage all the services for my setup and to make changes to them easily. There are two files involved the .env file where I setup variables that are plugged into the docker-compose.yml file, so changes and customizations can be made fairly easy.
+Setting up a media server can be a bit complex and time consuming, also a lot of people run this on old hardware so making it as portable as possible is always something to look out for.<br>
+Using Docker Compose to set everything up is a great way to automate and simplify the process. It also makes it so you can take your setup and run it anywhere and on multiple operating systems. Docker Compose is a tool that allows you to define and run multiple containers as a single service. It makes it easy to spin everything up with a single command and tear it all down in a short amount of time.<br>
+The main motivation behind my compose file is to have a centralized place to manage all the services for my setup and to allow me to make changes to them easily. There are two files involved the .env file where I setup variables that are plugged into the docker-compose.yml file, so changes and customizations can be made fairly easy in the .env file and leaving the larger docker-compose.yml alone.
 
 ``.env``
 ```yaml
@@ -277,21 +277,6 @@ services:
     networks:
       - media-network
 
-  #nzbget: #usenet download agent NO LONGER BEING DEVELOPED replaced with SABnzbd
-  #  image: ghcr.io/linuxserver/nzbget
-  #  container_name: nzbget
-  #  environment:
-  #    - PUID=$PUID
-  #    - PGID=$PGID
-  #    - TZ=$TZ
-  #  volumes:
-  #    - $APPDATA/nzbget:/config
-  #    - $DOWNDIR:/downloads
-  #  ports:
-  #    - 6789:6789
-  #  restart: unless-stopped
-  #  networks:
-  #    - media-network
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
     container_name: sabnzbd
