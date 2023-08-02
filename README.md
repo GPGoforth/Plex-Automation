@@ -236,7 +236,8 @@ Additional resources:
 
 Access the SABnzbd web interface at ``http://<your_host_ip>:8080`` to set up and configure your download client.
 1. Should load to a Wizzard to walk you through the baisc setup
-2. Instruction WIP
+2. If you want other programs to access SABnzbd by using sabnzbd in their hostname, you need to goto the Special settings and add sabnzbd to the whitelist.
+3. Instruction WIP
 Additional resources:
 [SABnzbd (Official Site)](https://sabnzbd.org/)
 
