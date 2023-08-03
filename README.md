@@ -1,7 +1,7 @@
 # Plex-Automation
 
 <!-- *Created 2023-07-31* Date Started to documentation and testing implementation-->
-<!-- *Modified 2023-08-01* -->
+<!-- *Modified 2023-08-03* -->
 
 Prerequisites:
 This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux. I am personally running this on Debian 12.1 and connecting to my NAS using CIFS.
@@ -189,6 +189,8 @@ Overall, the compose file creates a powerful and versatile media server that can
 ## Configurations
 
 Configuration of the services.
+
+For a better detailed guide that what I have I suggest heading over to [TRaSH Guides](https://trash-guides.info/).
 
 Please keep in mind that setting up a media server can be a complex task, especially if you are new to the technology and require some level of technical knowledge. It may be necessary to consult additional resources and tutorials to properly set up and configure your media server.<br>
 
