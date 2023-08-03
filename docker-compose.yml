@@ -115,6 +115,7 @@ services:
     volumes:
       - $APPDATA/bazarr:/config
       - $DOWNDIR:/downloads
+      - $PLEXMEDIA:/Media
     ports:
       - "6767:6767"
     restart: unless-stopped
