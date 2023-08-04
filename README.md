@@ -1,7 +1,7 @@
 # Plex-Automation
 
 <!-- *Created 2023-07-31* Date Started to documentation and testing implementation-->
-<!-- *Modified 2023-08-03* -->
+<!-- *Modified 2023-08-04* -->
 
 Prerequisites:
 This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux. I am personally running this on Debian 12.1 and connecting to my NAS using CIFS.
@@ -425,9 +425,10 @@ I am wanting to add Plex Autoscan in the near future to have faster scanning of 
 More services:
 - [ ] Hardware transcoding for Plex
 - [ ] Requestrr is a chatbot used to simplify using services like Sonarr/Radarr via the use of chat
-- [ ] Emby
-- [ ] Jellyfin
+- [ ] Emby - as options
+- [ ] Jellyfin -as options
 - [ ] Readarr
+- [ ] NZBHydra
 
 Maybe in the future:
 - [ ] Implement Ansible to fully deploy entire stack on a new server
