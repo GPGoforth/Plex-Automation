@@ -1,7 +1,7 @@
 # Plex-Automation
 
 <!-- *Created 2023-07-31* Date Started to documentation and testing implementation-->
-<!-- *Modified 2023-08-04* -->
+<!-- *Modified 2023-08-07* -->
 
 Prerequisites:
 This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux. I am personally running this on Debian 12.1 and connecting to my NAS using CIFS. I may post my servers exact setup steps here in the future.
