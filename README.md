@@ -122,19 +122,21 @@ Additional resources:
 - Web UI available at ``http://<your_host_ip>:80``
 - Click on ``Add an application here`` and search for the application, for example ``Plex``
 - Add the rest of the services from ``Application list`` then ``Add``, here is a table for all the applications. This is a great homepage to access all of your servers applications.
+
   | Title | URL |
-  | Plex          | ``http://<your_host_ip>:32400/web`` |
-  | SABnzbd   | ``http://<your_host_ip>:8080``         |
-  | Radarr       | ``http://<your_host_ip>:7878``         |
-  | Sonarr       | ``http://<your_host_ip>:8989``         |
-  | Lidarr        | ``http://<your_host_ip>:8686``         |
-  | Prowlarr    | ``http://<your_host_ip>:9696``         |
-  | Portainer   | ``http://<your_host_ip>:9000``         |
-  | Jackett       | ``http://<your_host_ip>:9117``         |
-  | Bazarr        | ``http://<your_host_ip>:6767``         |
-  | Overseerr  | ``http://<your_host_ip>:5055``         |
-  | Heimdall   | ``http://<your_host_ip>``                  |
-  | Homarr     | ``http://<your_host_ip>:7575``         |
+  | --- | --- |
+  | Plex | ``http://<your_host_ip>:32400/web`` |
+  | SABnzbd | ``http://<your_host_ip>:8080`` |
+  | Radarr | ``http://<your_host_ip>:7878`` |
+  | Sonarr | ``http://<your_host_ip>:8989`` |
+  | Lidarr | ``http://<your_host_ip>:8686`` |
+  | Prowlarr | ``http://<your_host_ip>:9696`` |
+  | Portainer | ``http://<your_host_ip>:9000`` |
+  | Jackett | ``http://<your_host_ip>:9117`` |
+  | Bazarr | ``http://<your_host_ip>:6767`` |
+  | Overseerr | ``http://<your_host_ip>:5055`` |
+  | Heimdall | ``http://<your_host_ip>`` |
+  | Homarr | ``http://<your_host_ip>:7575`` |
 
 - Last, you may want to change home page background from settings menu
 
