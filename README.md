@@ -1,7 +1,7 @@
 # Plex-Automation
 
 <!-- *Created 2023-07-31* Date Started to documentation and testing implementation-->
-<!-- *Modified 2023-08-07* -->
+<!-- *Modified 2023-08-12* -->
 
 Prerequisites:
 This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux. I am personally running this on Debian 12.1 and connecting to my NAS using CIFS. I may post my servers exact setup steps here in the future.
@@ -63,31 +63,30 @@ If for any reason things are not working as expected you can run `docker-compose
 
 Overall, the compose file creates a powerful and versatile media server that can automate the process of downloading and managing your media files, while also providing a variety of features and tools to enhance the overall functionality and security of the server.
 
-  An example of media folders structure (in terms of the compose above), note that you will need to create the folders on the filesystem:
-    ```bash
-    .
-    │   docker-compose.yml
-    │   .env
-    |   README.md
-    │
-    ├───Libraries
-    │   ├───plex
-    │   │   ├───movies
-    │   │   ├───music
-    │   │   └───tv
-    │   │
-    │───Downloads
-    │       ├───movies
-    │       ├───music
-    │       └───tv
-    │
-    └───AppData
-    │       ├───sonarr
-    │       ├───radarr
-    │       └───plex
-    │       └───etc...
-    ```
+  An example of media folders structure (in terms of the compose above), note that you will need to create the root folders on the filesystem (ex Libraries, downloads, appdata):
 
+```
+│   docker-compose.yml
+│   .env
+│
+├───Libraries
+│   ├───plex
+│   │   ├───movies
+│   │   ├───music
+│   │   └───tv
+│   │
+│   ├───downloads
+│   │   ├───movies
+│   │   ├───music
+│   │   └───tv
+│   └───appdata
+│       ├───sonarr
+│       ├───radarr
+│       ├───plex
+│       └───etc...
+│
+└───provision
+```    
 
 
 ## Configurations
