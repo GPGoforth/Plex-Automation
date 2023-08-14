@@ -253,12 +253,13 @@ Things I am looking to add..
 I am wanting to add Plex Autoscan in the near future to have faster scanning of new library items, but have not got it running as expexted yet.
 
 - [ ] Plex Autoscan
+- [ ] Tautulli - Gives data on Plex usage
 - [ ] Backups
 - [X] Switch to SABnzb as NZBGet is no longer in development
 - [ ] Monitoring (Including notifications, such as low storage etc..)
+- [X] Hardware transcoding for Plex (added config to docker-compose.yml to enable along with comments)
 
 More services:
-- [x] Hardware transcoding for Plex (added config to docker-compose.yml to enable along with comments)
 - [ ] Requestrr is a chatbot used to simplify using services like Sonarr/Radarr via the use of chat
 - [ ] Emby - as options
 - [ ] Jellyfin -as options
