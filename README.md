@@ -257,7 +257,7 @@ I am wanting to add Plex Autoscan in the near future to have faster scanning of 
 - [ ] Monitoring (Including notifications, such as low storage etc..)
 
 More services:
-- [x] Hardware transcoding for Plex (added config to docker-compose.yml to enable)
+- [x] Hardware transcoding for Plex (added config to docker-compose.yml to enable along with comments)
 - [ ] Requestrr is a chatbot used to simplify using services like Sonarr/Radarr via the use of chat
 - [ ] Emby - as options
 - [ ] Jellyfin -as options
