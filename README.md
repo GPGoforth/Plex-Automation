@@ -23,6 +23,7 @@ Table of Contents
   - [References](#references)
 
 There are a many options for creating a media server and automating it.<br>
+
 I have been a Plex user for years and have a lifetime Plex Pass, so that was going to be my personal choice but this could easily be modified for Emby, JellyFin or any other one out as simple changes to the docker-compose file could deploy them. My setup has evolved through the years starting out running on an old desktop with Windows. I eventually moved on to running everything on Ubuntu and moved my storage to several QNAP NAS devices. This became too many moving pieces, so I moved to running everything in Google Cloud and using Google Team Drives to house my library. The cost started adding up quick once my promotional credits ran out, so I moved the server parts back to a Intel NUC at my house and ran everything in Containers and us PG Blitz to still connect to my libraries running in Google Team Drive and this worked great as I paid Google $12 a month for G-Suite and had unlimited storage. Then I guess Google got wise when they forced everyone to move to Google Workspaces and suddenly the days of unlimited storage went away and now I get emails counting down the days until Google locks my Team Drive and that brings me to my new setup.
 
 <br>
