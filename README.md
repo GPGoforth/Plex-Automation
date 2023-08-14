@@ -37,7 +37,7 @@ The combination of applications I am running are [Plex](https://plex.tv). [Radar
 
 Setting up a media server can be a bit complex and time consuming, also a lot of people run this on old hardware so making it as portable as possible is always something to look out for.<br>
 Using Docker Compose to set everything up is a great way to automate and simplify the process. It also makes it so you can take your setup and run it anywhere and on multiple operating systems. Docker Compose is a tool that allows you to define and run multiple containers as a single service. It makes it easy to spin everything up with a single command and tear it all down in a short amount of time.<br>
-The main motivation behind my compose file is to have a centralized place to manage all the services for my setup and to allow me to make changes to them easily. There are two files involved the .env file where I setup variables that are plugged into the docker-compose.yml file, so changes and customizations can be made fairly easy in the .env file and leaving the larger docker-compose.yml alone.
+The main motivation behind my compose file is to have a centralized place to manage all the services for my setup and to allow me to make changes to them easily. There are two files involved the .env file where I setup variables that are plugged into the docker-compose.yml file, so changes and customizations can be made fairly easy in the .env file and leaving the larger docker-compose.yml alone.<br>
 
 Docker=Compose and .env files brief walk through
 
