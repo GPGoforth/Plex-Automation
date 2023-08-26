@@ -204,6 +204,21 @@ services:
     restart: unless-stopped
     networks:
       - media-network
+  
+  tautulli:
+    image: ghcr.io/tautulli/tautulli
+    container_name: tautulli
+    restart: unless-stopped
+    volumes:
+      - $APPDATA/tautulli:/config
+    environment:
+      - PUID=$$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    ports:
+      - 8181:8181
+    networks:
+      - media-network
 
 networks:
   media-network:
