@@ -19,6 +19,8 @@ Table of Contents
     - [Lidarr](#lidarr)
     - [Bazarr](#bazarr)
     - [Overseerr](#overseerr)
+    - [Autoscan](#autoscan)
+    - [Tayrulli](#tautulli)
   - [Personal notes](#personal-notes)
   - [References](#references)
 
