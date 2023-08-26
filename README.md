@@ -1,7 +1,7 @@
 # Plex-Automation
 
 <!-- *Created 2023-07-31* Date Started to documentation and testing implementation-->
-<!-- *Modified 2023-08-12* -->
+<!-- *Modified 2023-08-25* -->
 
 Prerequisites:
 This assumes you have a working installation of Docker and Docker-Compose. I am not going into it here due to there are many ways to install them and it differs on each flavor of linux. I am personally running this on Debian 12.1 and connecting to my NAS using CIFS. I may post my servers exact setup steps here in the future along with my NAS build.
@@ -246,14 +246,23 @@ Access the Overseerr web interface by navigating to the URL ``http://<your-serve
 Additional resources:
 - [Overseerr - Documentation](https://docs.overseerr.dev/)
 
+### Autoscan
+I was originally planning on implementing Plex Autoscan, but after playing with the Connect Fetures built into the "arr" apps is working for me now that I am using local storage and not cloud storage. This can be set in Radarr, Sonarr, and Lidarr by going to Settings > Connect > Plex Media Server. Put in your host address and then either enter your authorization token or authenticate with Plex.tv and you are all set. When items get added Plex will get notified and perform a scan to add themn to your library.
+
+### Tautulli
+Tautulli is a 3rd party application that you can run alongside your Plex Media Server to monitor activity and track various statistics. Most importantly, these statistics include what has been watched, who watched it, when and where they watched it, and how it was watched. The only thing missing is "why they watched it", but who am I to question your 42 plays of Frozen. All statistics are presented in a nice and clean interface with many tables and graphs, which makes it easy to brag about your server to everyone else.
+
+Additional Resources:
+- [Tautulli Official Website](https://tautulli.com/)
+
 ## Personal notes
 
 Things I am looking to add..
 
 I am wanting to add Plex Autoscan in the near future to have faster scanning of new library items, but have not got it running as expexted yet.
 
-- [ ] Plex Autoscan
-- [ ] Tautulli - Gives data on Plex usage
+- [X] Plex Autoscan ( Done using the builtin feature in the "arr" apps.
+- [X] Tautulli - Gives data on Plex usage
 - [ ] Backups
 - [X] Switch to SABnzb as NZBGet is no longer in development
 - [ ] Monitoring (Including notifications, such as low storage etc..)
