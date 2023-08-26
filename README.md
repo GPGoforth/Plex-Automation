@@ -20,7 +20,7 @@ Table of Contents
     - [Bazarr](#bazarr)
     - [Overseerr](#overseerr)
     - [Autoscan](#autoscan)
-    - [Tayrulli](#tautulli)
+    - [Tautulli](#tautulli)
   - [Personal notes](#personal-notes)
   - [References](#references)
 
