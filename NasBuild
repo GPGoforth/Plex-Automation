@@ -1,1 +1,27 @@
-#NAS Build
+
+## NAS Operating System
+
+- Unraid
+
+## NAS Case
+
+- Fractal Design Node 804
+
+## CPU/GPU/Motherboard/Misc Hardware
+
+- AMD Ryzen 7 5700X
+- A-Tech DDR4 3200Mhz ECC Unbuffered Memory
+- Corsair RM650x PSU
+- ASRock B550M Steel Legend Micro ATX Motherboard
+- ZOTAC GeForce GT 710 2GB DDR3 PCI-E2.0 DL-DVI VGA HDMI Passive Cooled Single Slot Low Profile Graphics Card (ZT-71302-20L)
+- DeepCool GAMMAXX AG620 CPU Air Cooler Mighty 260w TDP 6 Copper Heat Pipes Dual-Tower CPU Cooler with Fans
+- Gigabit Dual NIC with Intel 82576 Chip, 1Gb Network Card Compare to Intel E1G42ET NIC, 2 RJ45 Ports
+- 3 x Noctua NF-P12 redux-1700 PWM, High Performance Cooling Fan, 4-Pin, 1700 RPM
+- LSI 9208-8i 6G PCI-E 3.0 HBA IT Mode ZFS FreeNAS unRAID 2* SFF-8087 SATA
+- ElecGear M.2 2280 SSD Cooler, EL-80X PWM Cooling Fan + Heat Pipe + Solid Aluminum Heatsink
+
+## Drives
+
+- SanDisk 16GB Cruzer Fit USB 2.0 Flash Drive (Unraid OS Boot Drive)
+- Samsung 970 EVO Plus SSD 2TB NVMe M.2 (Cache Drive)
+- 8 x Seagate Exos X20 ST20000NM007D 20TB 7.2K RPM SATA 6Gb (Storage Drives + Parity)
