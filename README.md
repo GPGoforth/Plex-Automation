@@ -273,11 +273,11 @@ Things I am looking to add..
 
 I am wanting to add Plex Autoscan in the near future to have faster scanning of new library items, but have not got it running as expexted yet.
 
-- [X] Plex Autoscan ( Done using the builtin feature in the "arr" apps.
+- [X] Plex Autoscan ( Done using the builtin feature in the "arr" apps. )
 - [X] Tautulli - Gives data on Plex usage
-- [X] Backups
+- [X] Backups - added Duplicati 
 - [X] Switch to SABnzb as NZBGet is no longer in development
-- [ ] Monitoring (Including notifications, such as low storage etc..)
+- [X] Monitoring (Including notifications, such as low storage etc..) - this is provided by my NAS, but might look into 3rd party option later
 - [X] Hardware transcoding for Plex (added config to docker-compose.yml to enable along with comments)
 
 More services:
