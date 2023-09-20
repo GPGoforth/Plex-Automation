@@ -21,6 +21,7 @@ Table of Contents
     - [Overseerr](#overseerr)
     - [Autoscan](#autoscan)
     - [Tautulli](#tautulli)
+    - [Duplicati](#duplicati)
   - [Personal notes](#personal-notes)
   - [References](#references)
 
@@ -249,13 +250,20 @@ Additional resources:
 - [Overseerr - Documentation](https://docs.overseerr.dev/)
 
 ### Autoscan
-I was originally planning on implementing Plex Autoscan, but after playing with the Connect Fetures built into the "arr" apps is working for me now that I am using local storage and not cloud storage. This can be set in Radarr, Sonarr, and Lidarr by going to Settings > Connect > Plex Media Server. Put in your host address and then either enter your authorization token or authenticate with Plex.tv and you are all set. When items get added Plex will get notified and perform a scan to add themn to your library.
+I was originally planning on implementing Plex Autoscan, but after playing with the Connect Fetures built into the "arr" apps is working for me now that I am using local storage and not cloud storage. This can be set in Radarr, Sonarr, and Lidarr by going to Settings > Connect > Plex Media Server. Put in your host address and then either enter your authorization token or authenticate with Plex.tv and you are all set. When items get added Plex will get notified and perform a scan to add themn to your library. The contaier autoscan I was going to add is needed if you are using cloud storage, like I previously did but with my storage being local it is no longer an issue and the built in notifications work for my usage.
 
 ### Tautulli
 Tautulli is a 3rd party application that you can run alongside your Plex Media Server to monitor activity and track various statistics. Most importantly, these statistics include what has been watched, who watched it, when and where they watched it, and how it was watched. The only thing missing is "why they watched it", but who am I to question your 42 plays of Frozen. All statistics are presented in a nice and clean interface with many tables and graphs, which makes it easy to brag about your server to everyone else.
 
 Additional Resources:
 - [Tautulli Official Website](https://tautulli.com/)
+
+### Duplicati
+Duplicati is a backup tool that works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others. I am using it to backup all the configs used by my services, so if something should happen I can restore them without having to manually configure everything.
+
+Additional Resources:
+- [Duplicati Github](https://github.com/linuxserver/docker-duplicati/pkgs/container/duplicati)
+- [Duplicati Official Website](https://www.duplicati.com/)
 
 ## Personal notes
 
@@ -265,7 +273,7 @@ I am wanting to add Plex Autoscan in the near future to have faster scanning of 
 
 - [X] Plex Autoscan ( Done using the builtin feature in the "arr" apps.
 - [X] Tautulli - Gives data on Plex usage
-- [ ] Backups
+- [X] Backups
 - [X] Switch to SABnzb as NZBGet is no longer in development
 - [ ] Monitoring (Including notifications, such as low storage etc..)
 - [X] Hardware transcoding for Plex (added config to docker-compose.yml to enable along with comments)
