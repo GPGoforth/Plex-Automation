@@ -220,21 +220,5 @@ services:
     networks:
       - media-network
 
-  duplicati: #backup software to store encrypted backups online
-    image: lscr.io/linuxserver/duplicati:latest
-    container_name: duplicati
-    environment:
-      - PUID=$PUID
-      - PGID=$PGID
-      - TZ=$TZ
-      - CLI_ARGS= #optional
-    volumes:
-      - $APPDATA/duplicati:/config
-      - /mnt/backup:/backups #folder to store your backups
-      - $APPDATA:/source #location of files you want to backup in my case all the container config files
-    ports:
-      - 8200:8200
-    restart: unless-stopped
-
 networks:
   media-network:
