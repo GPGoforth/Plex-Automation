@@ -21,7 +21,7 @@ Table of Contents
     - [Overseerr](#overseerr)
     - [Autoscan](#autoscan)
     - [Tautulli](#tautulli)
-    - [Duplicati](#duplicati)
+    - [Restic](#restic)
   - [Personal notes](#personal-notes)
   - [References](#references)
 
@@ -260,12 +260,20 @@ Tautulli is a 3rd party application that you can run alongside your Plex Media S
 Additional Resources:
 - [Tautulli Official Website](https://tautulli.com/)
 
-### Duplicati
-Duplicati is a backup tool that works with standard protocols like FTP, SSH, WebDAV as well as popular services like Microsoft OneDrive, Amazon Cloud Drive & S3, Google Drive, box.com, Mega, hubiC and many others. I am using it to backup all the configs used by my services, so if something should happen I can restore them without having to manually configure everything.
+### Restic
+Restic is a modern backup program that can back up your files:
+- run scheduled backups
+- backup to any (local or remote) target supported by restic
+- support for tags, exclude definitions, and all other optional restic options
+- automatic forgetting of old backups
+- prune backups on a schedule
+- remove a stale repository lock
+- can be used as a (global) Docker swarm service in order to backup every cluster node
+- multi-arch: the image mazzolino/restic runs on amd64 as well as armv7 (for now)
 
 Additional Resources:
-- [Duplicati Github](https://github.com/linuxserver/docker-duplicati/pkgs/container/duplicati)
-- [Duplicati Official Website](https://www.duplicati.com/)
+- [Resticker Github](https://github.com/djmaze/resticker)
+- [Restick Official Website](https://restic.net/)
 
 ## Personal notes
 
