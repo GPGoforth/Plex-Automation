@@ -141,7 +141,6 @@ Additional resources:
   | Heimdall | ``http://<your_host_ip>`` |
   | Homarr | ``http://<your_host_ip>:7575`` |
   | Tautulli | ``http://<your_host_ip>:8181`` |
-  | Duplicati | ``http://<your_host_ip>:8200`` |
 
 - Last, you may want to change home page background from settings menu
 
